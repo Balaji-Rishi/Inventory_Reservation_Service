@@ -1,0 +1,24 @@
+Inventory Reservation Service
+
+Timeline: 5 hours or less
+
+Description:
+
+Build a Spring Boot microservice responsible for handling product inventory reservations. When a reservation request is received, the system must check stock availability, lock the required quantity, and mark the reservation as "PENDING."
+A background processor should confirm or expire the reservation based on a configurable timeout. Concurrency control is essential—simultaneous reservation requests must not oversell stock. The service must include APIs for reservation creation, confirmation, and stock queries. All updates must occur within transactions.
+
+Acceptance Criteria:
+
+Create reservation API → sets status to PENDING.
+
+Stock decreases only after reservation confirmation.
+
+If insufficient stock → return validation error.
+
+Prevent overselling using Optimistic/Pessimistic locking.
+
+Scheduler expires old reservations and restores stock.
+
+JWT authentication required for all stock operations.
+
+SLF4J logs for reservation/confirmation/expiry events.
